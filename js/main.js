@@ -96,13 +96,22 @@ $(document).ready(function () {
     })
 
     $(window).on('resize', function () {
-        $('.js-ac-content').each(function (i, el) {
-            if ($(el).height() !== 0) {
-                let targetHeight = $(el).find('.js-ac-height').outerHeight();
-                $(el).height(targetHeight);
-            }
-        })
+        let resizeTimeout;
+        if (!resizeTimeout) {
+            resizeTimeout = setTimeout(function () {
+                resizeTimeout = null;
+                $('.js-ac-content').each(function (i, el) {
+                    if ($(el).height() !== 0) {
+                        let targetHeight = $(el).find('.js-ac-height').outerHeight();
+                        $(el).height(targetHeight);
+                    }
+                })
+            }, 200);
+        }
     })
+
+
+
 
     //==== MODAL FORM ====
 
