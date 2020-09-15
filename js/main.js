@@ -1,30 +1,4 @@
-
-
 $(document).ready(function () {
-    //utilite for Pixel Perfect
-
-    // function pixPerf(image, inverted = false) {
-    //     let filter = inverted ? 'filter:invert(1);' : '';
-    //     document.querySelector('body').insertAdjacentHTML('afterbegin',
-    //         `<img src="${image}" id="pixelPerfectImage" alt=""
-    //     style=${filter}display:block;position:fixed;z-index:1000;opacity:.3;top:0;left:50%;transform:translateX(-50%)scale(2);margin:0;padding:0;">`);
-    //     document.addEventListener('keyup', function (e) {
-    //         if (e.altKey) {
-    //             let image = document.getElementById('pixelPerfectImage');
-    //             if (e.keyCode === 87) {
-    //                 if (image.style.display === "none") {
-    //                     image.style.display = "block";
-    //                 } else {
-    //                     image.style.display = "none";
-    //                 }
-    //             }
-    //         }
-    //     })
-
-    // }
-
-    // pixPerf('img/adapting/phone.png', 1);
-
 
     //==== OWL ====
     $(".owl-carousel").owlCarousel({
@@ -39,7 +13,6 @@ $(document).ready(function () {
         navigation: true,
         navigationText: '',
         singleItem: true,
-
     });
 
     //====HEADER MENU====
@@ -106,12 +79,9 @@ $(document).ready(function () {
                         $(el).height(targetHeight);
                     }
                 })
-            }, 200);
+            }, 500);
         }
-    })
-
-
-
+    });
 
     //==== MODAL FORM ====
 
@@ -138,7 +108,6 @@ $(document).ready(function () {
         $('.header__wrapper').removeAttr('style');
         $('.button-up-wrapper').removeAttr('style');
         $('body').removeAttr('style');
-
     });
 
     //==== FORM VALIDATION ====
@@ -149,7 +118,11 @@ $(document).ready(function () {
 
     $.validator.addMethod('js-mask-phone', function (value, element) {
         return this.optional(element) || $(element).inputmask('unmaskedvalue').length === 10;
-    }, 'Введите корректный номер');
+    }, 'Введите корректный номер.');
+
+    $.extend($.validator.messages, {
+        email: "Введите корректный адрес."
+    });
 
     $('.js-modal-form').validate();
 
@@ -187,7 +160,7 @@ $(document).ready(function () {
             iconImageHref: 'img/pin.svg',
             iconImageSize: [40, 50],
             iconImageOffset: [-40, -50],
-            iconContentOffset: [40, 10],
+            iconContentOffset: [10, 50],
             iconContentLayout: placemarkContent
         });
 
